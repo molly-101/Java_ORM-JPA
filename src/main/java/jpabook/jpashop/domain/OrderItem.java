@@ -2,6 +2,8 @@ package jpabook.jpashop.domain;
 
 import javax.persistence.*;
 
+import static javax.persistence.FetchType.LAZY;
+
 @Entity
 public class OrderItem extends BaseEntity{
 
@@ -9,11 +11,11 @@ public class OrderItem extends BaseEntity{
     @Column(name = "order_item_id")
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "order_id") // 연관관계의 주인이 FK를 가지고있는 OrderItem 이 된
     private Order order;
 
-    @ManyToOne
+    @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "item_id") // 연관관계의 주인이 FK를 가지고 있는 OrderItem 이 된다.
     private Item item;
 
